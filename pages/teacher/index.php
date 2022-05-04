@@ -1,8 +1,9 @@
 <?php
   include __DIR__ . "/../../app/Models/DB.php";
-
-  $db = new DB('teachers');
-  $teachers = $db->select("*")->where("id = 3")->or("id = 5")->get();
+  include __DIR__ . "/../../app/Models/Teacher.php";
+  
+  $teacher = new Teacher();
+  $teachers = $teacher->select("*")->get();
 
 ?>
 <div class="container mt-5 mb-5">
@@ -16,6 +17,7 @@
       <th scope="col">Email</th>
       <th scope="col">Phone</th>
       <th scope="col">BirthDay</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -26,6 +28,12 @@
       <td><?= $teacher['email'] ?></td>
       <td><?= $teacher['phone'] ?></td>
       <td><?= $teacher['birthday'] ?></td>
+      <td>
+        <form method="post" action="/teacher/edit">
+          <input type="hidden" name="id" value="<?= $teacher['id'] ?>">
+          <button class="btn btn-primary" type="submit">Edit</button>
+        </form>
+      </td>
     </tr>
     <?php endforeach; ?>
   </tbody>
