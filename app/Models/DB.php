@@ -1,6 +1,6 @@
 <?php
 
-class DB
+abstract class DB
 {
     private mysqli|bool $conn;
     protected string $table;
@@ -11,38 +11,38 @@ class DB
         $this->conn = mysqli_connect('localhost','mohammed','123','oop');
     }
 
-    public function select(string $columns) : DB
+    protected function select(string $columns) : DB
     {
         $this->query = "SELECT $columns FROM {$this->table} ";
         return $this;
     }
 
-    public function where($condition) : DB
+    protected function where($condition) : DB
     {
         $this->query .= " WHERE $condition ";
         return $this;
     }
 
-    public function and($condition) : DB
+    protected function and($condition) : DB
     {
         $this->query .= " AND $condition ";
         return $this;
     }
 
-    public function or($condition) : DB
+    protected function or($condition) : DB
     {
         $this->query .= " OR $condition ";
         return $this;
     }
 
-    public function get() : array
+    protected function get() : array
     {
         $result = mysqli_query($this->conn,$this->query);
         $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
         return $result;
     }
 
-    public function create(array $data) : DB
+    protected function createDB(array $data) : DB
     {
         $keys = "";
         $values = "";
@@ -58,7 +58,7 @@ class DB
         return $this;
     }
 
-    public function update(array $data) : DB
+    protected function updateDB(array $data) : DB
     {
         $myQueryData = "";
         foreach($data as $key => $value)
@@ -74,13 +74,13 @@ class DB
         return $this;
     }
 
-    public function delete()
+    protected function deleteDB()
     {
         $this->query = "DELETE FROM {$this->table} ";
         return $this;
     }
 
-    public function excute()
+    protected function excute()
     {
         $result = mysqli_query($this->conn,$this->query);
         return $result;

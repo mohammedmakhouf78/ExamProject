@@ -10,14 +10,14 @@ if(isset($_POST['email']))
     $phone = $_POST['phone'];
     $birthday = $_POST['birthday'];
 
-    $teacher = new Teacher();
+    $teacher = new Teacher($id);
 
     $result = $teacher->update([
         'name' => $name,
         'email' => $email,
         'phone' => $phone,
         'birthday' => $birthday
-    ])->where("id = $id")->excute();
+    ]);
 
     if($result == true)
     {

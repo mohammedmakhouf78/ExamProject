@@ -3,7 +3,7 @@
   include __DIR__ . "/../../app/Models/Teacher.php";
   
   $teacher = new Teacher();
-  $teachers = $teacher->select("*")->get();
+  $teachers = $teacher->all();
 
 ?>
 <div class="container mt-5 mb-5">
@@ -32,6 +32,11 @@
         <form method="post" action="/teacher/edit">
           <input type="hidden" name="id" value="<?= $teacher['id'] ?>">
           <button class="btn btn-primary" type="submit">Edit</button>
+        </form>
+
+        <form method="post" action="<?= controller('TeacherController/delete.php') ?>">
+          <input type="hidden" name="id" value="<?= $teacher['id'] ?>">
+          <button class="btn btn-danger" type="submit">Delete</button>
         </form>
       </td>
     </tr>

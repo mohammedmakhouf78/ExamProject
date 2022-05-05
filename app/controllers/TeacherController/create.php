@@ -17,7 +17,7 @@ if(isset($_POST['email']))
         'email' => $email,
         'phone' => $phone,
         'birthday' => $birthday
-    ])->excute();
+    ]);
 
     if($result == true)
     {
