@@ -1,13 +1,49 @@
 <?php
+//class
+//objects
+//this
+//constructor
+//destructor
+//inhiritance
+//method chaning
+//static
+//parent
+//slef
+//constructor inheritance
+//abstract class
+//abstract function
+//encapsulation
+//setters , getters
+//access modifiers public , private , protected
+//class const
 
-$URI = $_SERVER['REQUEST_URI'];
 
 
-
+//polymorphism
+//override
+//overload
+//final
+//__tostring
+//interfaces
+//namespaces
+//autoloading
+//traits
+//multi inheritance
+//magic methods
+//assosiation
+//aggregation
+//composition
+//design patterns
+//singletorn
+//factory
+//exception handling
 include __DIR__ . "/functions/functions.php";
 include __DIR__ . "/layouts/head.php";
 include __DIR__ . "/layouts/nav.php";
 include __DIR__ . "/layouts/header.php";
+
+
+$URI = $_SERVER['REQUEST_URI'];
 
 
 /*****  Teacher    ****** */
