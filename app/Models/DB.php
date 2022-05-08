@@ -8,7 +8,15 @@ abstract class DB
 
     public function __construct()
     {
-        $this->conn = mysqli_connect('localhost','mohammed','123','oop');
+        $this->conn = DBConnection::connect();
+    }
+
+    protected static function staticSelect($columns, $table)
+    {
+        $query = "SELECT $columns FROM $table";
+        $result = mysqli_query(DBConnection::connect(),$query);
+        $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        return $result;
     }
 
     protected function select(string $columns) : DB
@@ -42,7 +50,7 @@ abstract class DB
         return $result;
     }
 
-    protected function createDB(array $data) : DB
+    protected static function createDB(array $data,$table) : bool
     {
         $keys = "";
         $values = "";
@@ -54,8 +62,9 @@ abstract class DB
         $keys = rtrim($keys,",");
         $values = rtrim($values,",");
 
-        $this->query = "INSERT INTO {$this->table} ($keys) VALUES ($values)";
-        return $this;
+        $query = "INSERT INTO {$table} ($keys) VALUES ($values)";
+        $result = mysqli_query(DBConnection::connect(),$query);
+        return $result;
     }
 
     protected function updateDB(array $data) : DB

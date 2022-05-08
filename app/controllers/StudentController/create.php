@@ -1,22 +1,18 @@
 <?php
+
 include __DIR__ . "/../../Models/DB.php";
 include __DIR__ . "/../../Models/DBConnection.php";
 include __DIR__ . "/../../Models/Model.php";
-include __DIR__ . "/../../Models/Teacher.php";
+include __DIR__ . "/../../Models/Student.php";
 
-if(isset($_POST['email']))
+if(isset($_POST['name']))
 {
-    $id = $_POST['id'];
     $name = $_POST['name'];
-    $email = $_POST['email'];
     $phone = $_POST['phone'];
     $birthday = $_POST['birthday'];
 
-    $teacher = new Teacher($id);
-
-    $result = $teacher->update([
+    $result = Student::create([
         'name' => $name,
-        'email' => $email,
         'phone' => $phone,
         'birthday' => $birthday
     ]);

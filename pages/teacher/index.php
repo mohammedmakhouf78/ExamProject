@@ -1,9 +1,10 @@
 <?php
   include __DIR__ . "/../../app/Models/DB.php";
+  include __DIR__ . "/../../app/Models/Model.php";
   include __DIR__ . "/../../app/Models/Teacher.php";
+  include __DIR__ . "/../../app/Models/DBConnection.php";
   
-  $teacher = new Teacher();
-  $teachers = $teacher->all();
+  $teachers = Teacher::all();
 
 ?>
 <div class="container mt-5 mb-5">

@@ -1,6 +1,8 @@
 <?php
 
 include __DIR__ . "/../../Models/DB.php";
+include __DIR__ . "/../../Models/DBConnection.php";
+include __DIR__ . "/../../Models/Model.php";
 include __DIR__ . "/../../Models/Teacher.php";
 
 if(isset($_POST['email']))
@@ -10,9 +12,7 @@ if(isset($_POST['email']))
     $phone = $_POST['phone'];
     $birthday = $_POST['birthday'];
 
-    $teacher = new Teacher();
-
-    $result = $teacher->create([
+    $result = Teacher::create([
         'name' => $name,
         'email' => $email,
         'phone' => $phone,

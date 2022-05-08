@@ -2,15 +2,15 @@
 include __DIR__ . "/../../Models/DB.php";
 include __DIR__ . "/../../Models/DBConnection.php";
 include __DIR__ . "/../../Models/Model.php";
-include __DIR__ . "/../../Models/Teacher.php";
+include __DIR__ . "/../../Models/Student.php";
 
 if(isset($_POST['id']))
 {
     $id = $_POST['id'];
 
-    $teacher = new Teacher($id);
+    $student = new Student($id);
 
-    if($teacher->delete() == true)
+    if($student->delete() == true)
     {
         echo "true";
     }
