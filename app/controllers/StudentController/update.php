@@ -3,28 +3,16 @@ include __DIR__ . "/../../Models/DB.php";
 include __DIR__ . "/../../Models/DBConnection.php";
 include __DIR__ . "/../../Models/Model.php";
 include __DIR__ . "/../../Models/Student.php";
+include __DIR__ . "/../../Classes/Request.php";
+include __DIR__ . "/../../Classes/Redirect.php";
 
 if(isset($_POST['name']))
 {
-    $id = $_POST['id'];
-    $name = $_POST['name'];
-    $phone = $_POST['phone'];
-    $birthday = $_POST['birthday'];
+    $request = new Request();
 
-    $student = new Student($id);
+    $student = new Student($request->getByKey('id'));
 
-    $result = $student->update([
-        'name' => $name,
-        'phone' => $phone,
-        'birthday' => $birthday
-    ]);
+    $student->update($request->except(['id']));
 
-    if($result == true)
-    {
-        echo "true";
-    }
-    else
-    {
-        echo "false";
-    }
+    Redirect::message("Student Updated successfully")->redirectDelay('/student');
 }

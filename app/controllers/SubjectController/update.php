@@ -2,17 +2,17 @@
 include __DIR__ . "/../../Models/DB.php";
 include __DIR__ . "/../../Models/DBConnection.php";
 include __DIR__ . "/../../Models/Model.php";
-include __DIR__ . "/../../Models/Teacher.php";
+include __DIR__ . "/../../Models/Subject.php";
 include __DIR__ . "/../../Classes/Request.php";
 include __DIR__ . "/../../Classes/Redirect.php";
 
-if(isset($_POST['id']))
+if(isset($_POST['name']))
 {
     $request = new Request();
 
-    $teacher = new Teacher($id);
+    $subject = new Subject($request->getByKey('id'));
 
-    $teacher->delete();
-    
-    Redirect::message("Teacher Deleted successfully")->redirectDelay('/teacher');
+    $subject->update($request->except(['id']));
+
+    Redirect::message("Subject Updated successfully")->redirectDelay('/subject');
 }

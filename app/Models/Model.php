@@ -9,23 +9,40 @@ class Model extends DB
         $this->id = $id;
     }
 
+    public function find()
+    {
+        return $this->select('*')->where("id = " . $this->id)->get()[0];
+    }
+
     public static function all()
     {
-        return self::staticSelect("*","students");
+        return self::staticSelect("*");
     }
 
     public function update($data)
     {
-        return $this->updateDB($data)->where("id = " . $this->id)->excute();
+        $result = $this->updateDB($data)->where("id = " . $this->id)->excute();
+        if($result == false)
+        {
+            self::showError();
+        }
     }
 
     public function delete()
     {
-        return $this->deleteDB()->where("id = " . $this->id)->excute();
+        $result = $this->deleteDB()->where("id = " . $this->id)->excute();
+        if($result == false)
+        {
+            self::showError();
+        }
     }
 
     public static function create($data)
     {
-        return self::createDB($data,"students");
+        $result = self::createDB($data);
+        if($result == false)
+        {
+            self::showError();
+        }
     }
 }

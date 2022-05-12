@@ -4,27 +4,14 @@ include __DIR__ . "/../../Models/DB.php";
 include __DIR__ . "/../../Models/DBConnection.php";
 include __DIR__ . "/../../Models/Model.php";
 include __DIR__ . "/../../Models/Teacher.php";
+include __DIR__ . "/../../Classes/Request.php";
+include __DIR__ . "/../../Classes/Redirect.php";
 
 if(isset($_POST['email']))
 {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $birthday = $_POST['birthday'];
+    $request = new Request();
 
-    $result = Teacher::create([
-        'name' => $name,
-        'email' => $email,
-        'phone' => $phone,
-        'birthday' => $birthday
-    ]);
+    Teacher::create($request->getPost());
 
-    if($result == true)
-    {
-        echo "true";
-    }
-    else
-    {
-        echo "false";
-    }
+    Redirect::message("Teacher Created successfully")->redirectDelay('/teacher');
 }

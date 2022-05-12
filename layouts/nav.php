@@ -13,7 +13,7 @@
                     <ul class="nav">
                         <li class="scroll-to-section"><a href="/teacher" class="active">Teacher</a></li>
                         <li class="scroll-to-section"><a href="/student">Student</a></li>
-                        <li class="scroll-to-section"><a href="#about">About</a></li>
+                        <li class="scroll-to-section"><a href="/subject">Subject</a></li>
                         <li class="has-sub">
                             <a href="javascript:void(0)">Pages</a>
                             <ul class="sub-menu">

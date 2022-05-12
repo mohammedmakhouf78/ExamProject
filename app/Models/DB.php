@@ -3,7 +3,7 @@
 abstract class DB
 {
     private mysqli|bool $conn;
-    protected string $table;
+    protected static string $table;
     private string $query;
 
     public function __construct()
@@ -11,9 +11,25 @@ abstract class DB
         $this->conn = DBConnection::connect();
     }
 
-    protected static function staticSelect($columns, $table)
+    public static function getTable()
     {
-        $query = "SELECT $columns FROM $table";
+        if(!isset(static::$table))
+        {
+            $className = static::class;
+            $className = strtolower($className);
+            return $className . "s";
+        }
+        return static::$table;
+    }
+
+    public function showError()
+    {
+        echo mysqli_error($this->conn);
+    }
+
+    protected static function staticSelect($columns)
+    {
+        $query = "SELECT $columns FROM " . self::getTable();
         $result = mysqli_query(DBConnection::connect(),$query);
         $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
         return $result;
@@ -21,7 +37,7 @@ abstract class DB
 
     protected function select(string $columns) : DB
     {
-        $this->query = "SELECT $columns FROM {$this->table} ";
+        $this->query = "SELECT $columns FROM " . self::getTable();
         return $this;
     }
 
@@ -50,7 +66,7 @@ abstract class DB
         return $result;
     }
 
-    protected static function createDB(array $data,$table) : bool
+    protected static function createDB(array $data) : bool
     {
         $keys = "";
         $values = "";
@@ -62,7 +78,7 @@ abstract class DB
         $keys = rtrim($keys,",");
         $values = rtrim($values,",");
 
-        $query = "INSERT INTO {$table} ($keys) VALUES ($values)";
+        $query = "INSERT INTO ".self::getTable()." ($keys) VALUES ($values)";
         $result = mysqli_query(DBConnection::connect(),$query);
         return $result;
     }
@@ -79,13 +95,13 @@ abstract class DB
         }
         $myQueryData = rtrim($myQueryData,",");
         
-        $this->query = "UPDATE {$this->table} SET $myQueryData";
+        $this->query = "UPDATE ".self::getTable()." SET $myQueryData";
         return $this;
     }
 
     protected function deleteDB()
     {
-        $this->query = "DELETE FROM {$this->table} ";
+        $this->query = "DELETE FROM " .self::getTable();
         return $this;
     }
 

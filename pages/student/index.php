@@ -1,8 +1,5 @@
 <?php
-  include __DIR__ . "/../../app/Models/DB.php";
-  include __DIR__ . "/../../app/Models/Model.php";
   include __DIR__ . "/../../app/Models/Student.php";
-  include __DIR__ . "/../../app/Models/DBConnection.php";
   
   $students = Student::all();
 
