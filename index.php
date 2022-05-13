@@ -1,5 +1,70 @@
 <?php
 
+
+
+class Animal
+{
+    public function __set($name, $value)
+    {
+        echo $name . " " . $value . "<br>";
+    }
+}
+
+$animal = new Animal();
+
+$animal->age = 30;
+$animal->price = 330;
+
+var_dump($animal);
+
+die;
+
+
+
+
+// class Animal
+// {
+//     public $name = "ahmed";
+//     public function __get($name)
+//     {
+//         $this->$name = "$name";
+//     }
+// }
+
+// $animal = new Animal();
+
+
+// echo $animal->age;
+// echo $animal->name;
+// echo $animal->price;
+
+// var_dump($animal);
+
+// die;
+
+
+
+
+
+// //override
+// class Animal
+// {
+//     public function hello()
+//     {
+//         echo "hello animal";
+//     }
+// }
+
+// class Dog extends Animal
+// {
+//     public function hello() // this hello overrides the parent hello
+//     {
+//         echo "hello Dog";
+//     }
+// }
+
+
+
 //class
 //objects
 //constructor
@@ -24,7 +89,6 @@
 // polymorphism
 
 
-//overload
 //__tostring
 //interfaces
 //namespaces
