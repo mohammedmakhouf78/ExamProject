@@ -15,25 +15,27 @@
       <th scope="col">Email</th>
       <th scope="col">Phone</th>
       <th scope="col">BirthDay</th>
+      <th scope="col">Age</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
     <?php foreach($teachers as $teacher): ?>
     <tr>
-      <th scope="row"><?= $teacher['id'] ?></th>
-      <td><?= $teacher['name'] ?></td>
-      <td><?= $teacher['email'] ?></td>
-      <td><?= $teacher['phone'] ?></td>
-      <td><?= $teacher['birthday'] ?></td>
+      <th scope="row"><?= $teacher->id ?></th>
+      <td><?= $teacher->name ?></td>
+      <td><?= $teacher->email ?></td>
+      <td><?= $teacher->phone ?></td>
+      <td><?= $teacher->birthday ?></td>
+      <td><?= $teacher->age ?></td>
       <td>
         <form method="post" action="/teacher/edit">
-          <input type="hidden" name="id" value="<?= $teacher['id'] ?>">
+          <input type="hidden" name="id" value="<?= $teacher->id ?>">
           <button class="btn btn-primary" type="submit">Edit</button>
         </form>
 
         <form method="post" action="<?= controller('TeacherController/delete.php') ?>">
-          <input type="hidden" name="id" value="<?= $teacher['id'] ?>">
+          <input type="hidden" name="id" value="<?= $teacher->id ?>">
           <button class="btn btn-danger" type="submit">Delete</button>
         </form>
       </td>

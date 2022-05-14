@@ -18,16 +18,16 @@
   <tbody>
     <?php foreach($subjects as $subject): ?>
     <tr>
-      <th scope="row"><?= $subject['id'] ?></th>
-      <td><?= $subject['name'] ?></td>
+      <th scope="row"><?= $subject->id ?></th>
+      <td><?= $subject->name ?></td>
       <td>
         <form method="post" action="/subject/edit">
-          <input type="hidden" name="id" value="<?= $subject['id'] ?>">
+          <input type="hidden" name="id" value="<?= $subject->id ?>">
           <button class="btn btn-primary" type="submit">Edit</button>
         </form>
 
         <form method="post" action="<?= controller('SubjectController/delete.php') ?>">
-          <input type="hidden" name="id" value="<?= $subject['id'] ?>">
+          <input type="hidden" name="id" value="<?= $subject->id ?>">
           <button class="btn btn-danger" type="submit">Delete</button>
         </form>
       </td>

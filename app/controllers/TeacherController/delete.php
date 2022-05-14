@@ -10,7 +10,7 @@ if(isset($_POST['id']))
 {
     $request = new Request();
 
-    $teacher = new Teacher($id);
+    $teacher = new Teacher($request->getByKey('id'));
 
     $teacher->delete();
     

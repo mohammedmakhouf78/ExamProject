@@ -9,6 +9,30 @@ class Model extends DB
         $this->id = $id;
     }
 
+    public function __get($name)
+    {
+        $model = $this->find();
+        if(array_key_exists($name , $model))
+        {
+            $this->$name = $model[$name];
+            return $this->$name;
+        }
+        else
+        {
+            $method = "get$name";
+            if(method_exists($this, $method))
+            {
+                return $this->$method();
+            }
+            else
+            {
+                die("fuck you");
+            }
+        }
+
+
+    }
+
     public function find()
     {
         return $this->select('*')->where("id = " . $this->id)->get()[0];
@@ -16,7 +40,14 @@ class Model extends DB
 
     public static function all()
     {
-        return self::staticSelect("*");
+        $data = self::staticSelect("*");
+        $class = static::class;
+        $newData = [];
+        foreach($data as $model)
+        {
+            $newData []= new $class($model['id']);
+        }
+        return $newData;
     }
 
     public function update($data)

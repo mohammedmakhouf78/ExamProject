@@ -1,27 +1,6 @@
 <?php
 
 
-
-class Animal
-{
-    public function __set($name, $value)
-    {
-        echo $name . " " . $value . "<br>";
-    }
-}
-
-$animal = new Animal();
-
-$animal->age = 30;
-$animal->price = 330;
-
-var_dump($animal);
-
-die;
-
-
-
-
 // class Animal
 // {
 //     public $name = "ahmed";
