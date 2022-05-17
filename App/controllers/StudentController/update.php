@@ -1,4 +1,5 @@
 <?php
+include __DIR__ . "/../../Traits/DateTimeTrait.php";
 include __DIR__ . "/../../Models/DB.php";
 include __DIR__ . "/../../Models/DBConnection.php";
 include __DIR__ . "/../../Models/Model.php";

@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Classes;
+
 class Redirect
 {
     public static function message($message)

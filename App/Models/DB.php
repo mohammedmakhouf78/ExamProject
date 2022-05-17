@@ -1,8 +1,10 @@
 <?php
 
+namespace App\Models;
+
 abstract class DB
 {
-    private mysqli|bool $conn;
+    private \mysqli|bool $conn;
     protected static string $table;
     private string $query;
 

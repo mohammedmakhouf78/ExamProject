@@ -1,6 +1,62 @@
 <?php
 
 
+
+
+
+// class Animal
+// {
+
+// }
+
+// trait Bird
+// {
+//     private function hello()
+//     {
+//         echo "hello" . $this->name;
+//     }
+// }
+
+// class Eagle extends Animal
+// {
+//     use Bird;
+
+//     private $name = "ahmed";
+
+//     public function fun()
+//     {
+//         $this->hello();
+//     }
+// }
+
+// $eagle = new Eagle();
+
+// $eagle->fun();
+
+// die;
+
+// class Animal
+// {
+//     private $price = 150;
+//     public function __toString() // run when you use the object as string
+//     {
+//         return "price : " . $this->price;
+//     }
+
+//     public function __invoke() // run when you use the object as funciton
+//     {
+        
+//     }
+
+// }
+
+// $animal = new Animal();
+
+// $animal(); // the __invoke will work;
+// echo $animal; // the __toString will work;
+
+// die;
+
 // class Animal
 // {
 //     public $name = "ahmed";
@@ -66,22 +122,20 @@
 // final with methods = prevents the override.
 // final with classes = the class can't be inherited but can sell make objects
 // polymorphism
-
-
+//magic methods
+//multi inheritance
+//traits
 //__tostring
+
+
+
 //interfaces
 //namespaces
 //autoloading
-//traits
-//multi inheritance
-//magic methods
 //assosiation
 //aggregation
 //composition
-//design patterns
-//singleton
-//factory
-//exception handling
+
 include __DIR__ . "/functions/functions.php";
 include __DIR__ . "/layouts/head.php";
 include __DIR__ . "/layouts/nav.php";

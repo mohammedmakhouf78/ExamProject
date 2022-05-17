@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Models;
+
 class Model extends DB
 {
     private $id;
